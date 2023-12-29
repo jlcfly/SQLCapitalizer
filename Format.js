@@ -35,8 +35,19 @@ const Format = {
         let newsql = this.origSqlArea.value
 
         keywords.forEach(function(keyword) {
-            const re = new RegExp(`\\b${keyword}\\b`, 'gi');
-            newsql = newsql.replace(re, (self.keywordCase == 'L' ? keyword.toLowerCase() : keyword.toUpperCase()))
+            // Exclude keywords within quotes.
+            // See answer by zx81 at https://stackoverflow.com/questions/6462578/regex-to-match-all-instances-not-inside-quotes
+            const re = new RegExp(`'[^']+'|(\\b${keyword}\\b)`, 'gi')
+            newsql = newsql.replace(re, function(match, group1) {
+                console.log('match', match)
+                console.log('group1', group1)
+                if (!group1) {
+                    return match
+                }
+                else {
+                    return (self.keywordCase == 'L' ? keyword.toLowerCase() : keyword.toUpperCase())
+                }
+            });
         })
 
         return this.newSqlArea.value = newsql
