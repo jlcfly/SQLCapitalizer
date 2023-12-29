@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL Capitalizer</title>
+    <style>
+        *, html {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            padding: 2em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #field-area {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            justify-content: space-evenly;
+            height: calc(100vh - 6em);
+            border: 1px solid red;
+            width: 100%;
+        }
+
+        .sql-area {
+            width: calc(100% - 2px);
+            height: calc(100% - 2em);
+            font-family: Consolas, 'Courier New', Courier, monospace;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div id="field-area">
+        <div>
+            Original SQL:<br>
+            <textarea id="orig-sql" class="sql-area" spellcheck="false"></textarea>
+        </div>
+
+        <div>
+            New SQL:<br>
+            <textarea id="new-sql" class="sql-area" spellcheck="false"></textarea>
+        </div>
+    </div>
+    
+    Keywords to: 
+    <label>
+        <input type="radio" name="keyword_case" value="U"> Uppercase
+    </label>
+    <label>
+        <input type="radio" name="keyword_case" value="L"> Lowercase
+    </label>
+
+    <script type="module">
+        import Format from './Format.js'
+        Format.init('orig-sql', 'new-sql')
+
+        document
+            .querySelectorAll('input[name="keyword_case"]')
+            .forEach(function(elem) {
+                elem.addEventListener('change', function() {
+                    Format.setKeywordCase(this.value)
+                    Format.format()
+                })
+            })
+    </script>
+</body>
+</html>
