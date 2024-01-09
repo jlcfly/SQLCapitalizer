@@ -87,6 +87,7 @@ export const keywords = [
     'INTERSECT',
     'INTO',
     'IS',
+    'ISNULL',
     'JOIN',
     'KEY',
     'KILL',
