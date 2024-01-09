@@ -4,6 +4,7 @@ export const keywords = [
     'ALTER',
     'AND',
     'ANY',
+    'APPLY',
     'AS',
     'ASC',
     'AUTHORIZATION',
