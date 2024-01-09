@@ -98,6 +98,7 @@ export const keywords = [
     'MERGE',
     'NATIONAL',
     'NOCHECK',
+    'NOLOCK',
     'NONCLUSTERED',
     'NOT',
     'NULL',
