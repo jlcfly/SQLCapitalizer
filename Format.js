@@ -37,7 +37,7 @@ const Format = {
         keywords.forEach(function(keyword) {
             // Exclude keywords within quotes.
             // See answer by zx81 at https://stackoverflow.com/questions/6462578/regex-to-match-all-instances-not-inside-quotes
-            const re = new RegExp(`'[^']+'|(\\b${keyword}\\b)`, 'gi')
+            const re = new RegExp(`'(?:''|[^'])*'|(\\b${keyword}\\b)`, 'gi')
             newsql = newsql.replace(re, function(match, group1) {
                 console.log('match', match)
                 console.log('group1', group1)
