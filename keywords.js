@@ -173,7 +173,7 @@ export const keywords = [
     'TABLE',
     'TEXTSIZE',
     'THEN',
-	'TINYINT'
+	'TINYINT',
     'TO',
     'TOP',
     'TRAN',
